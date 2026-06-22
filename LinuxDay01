@@ -1,0 +1,106 @@
+In Day01 linux i have learnt about distributions,applications of linux.
+I have practiced commands:-clear,uname,man,whoami,pwd,history,who,sudo su -,ls,cd,mv,cat,mkdir,touch,rm,rmdir,vi
+
+[ec2-user@ip-172-31-39-221 ~]$
+[ec2-user@ip-172-31-39-221 ~]$
+[ec2-user@ip-172-31-39-221 ~]$
+[ec2-user@ip-172-31-39-221 ~]$
+[ec2-user@ip-172-31-39-221 ~]$
+[ec2-user@ip-172-31-39-221 ~]$
+[ec2-user@ip-172-31-39-221 ~]$ uname
+Linux
+[ec2-user@ip-172-31-39-221 ~]$ man ls
+[ec2-user@ip-172-31-39-221 ~]$ man -f grep
+grep (1)             - print lines that match patterns
+[ec2-user@ip-172-31-39-221 ~]$ whoami
+ec2-user
+[ec2-user@ip-172-31-39-221 ~]$ pwd
+/home/ec2-user
+[ec2-user@ip-172-31-39-221 ~]$ history
+    1  exit
+    2  clear
+    3  uname
+    4  man ls
+    5  man -f grep
+    6  whoami
+    7  pwd
+    8  history
+[ec2-user@ip-172-31-39-221 ~]$ sudo su -
+Last login: Sat Jun 20 07:12:10 UTC 2026 on pts/1
+[root@ip-172-31-39-221 ~]# exit
+logout
+[ec2-user@ip-172-31-39-221 ~]$ history -d 1
+[ec2-user@ip-172-31-39-221 ~]$ history
+    1  clear
+    2  uname
+    3  man ls
+    4  man -f grep
+    5  whoami
+    6  pwd
+    7  history
+    8  sudo su -
+    9  history -d 1
+   10  history
+[ec2-user@ip-172-31-39-221 ~]$ history N
+-bash: history: N: numeric argument required
+[ec2-user@ip-172-31-39-221 ~]$ who
+ec2-user pts/0        2026-06-22 00:33 (103.90.157.82)
+[ec2-user@ip-172-31-39-221 ~]$ ls
+[ec2-user@ip-172-31-39-221 ~]$ ls -lrth
+total 0
+[ec2-user@ip-172-31-39-221 ~]$ mkdir Java
+[ec2-user@ip-172-31-39-221 ~]$ ls
+Java
+[ec2-user@ip-172-31-39-221 ~]$ cd Java
+[ec2-user@ip-172-31-39-221 Java]$ touch Hello.java
+[ec2-user@ip-172-31-39-221 Java]$ vi Hello.java
+[ec2-user@ip-172-31-39-221 Java]$ cat Hello.java
+class Hello {
+    public static void main (String[] args) {
+        System.out.println("Hello World");
+    }
+}
+[ec2-user@ip-172-31-39-221 Java]$ cd ..
+[ec2-user@ip-172-31-39-221 ~]$ ls
+Java
+[ec2-user@ip-172-31-39-221 ~]$ ls Java/
+Hello.java
+[ec2-user@ip-172-31-39-221 ~]$ cat Hello.java
+cat: Hello.java: No such file or directory
+[ec2-user@ip-172-31-39-221 ~]$ cd Java
+[ec2-user@ip-172-31-39-221 Java]$ rm Hello.java
+[ec2-user@ip-172-31-39-221 Java]$ cat Hello.java
+cat: Hello.java: No such file or directory
+[ec2-user@ip-172-31-39-221 Java]$ vi Hello.java
+[ec2-user@ip-172-31-39-221 Java]$ cat Hello.java
+class Hello {
+    public static void main (String[] args) {
+        System.out.println("Hello World");
+    }
+}
+[ec2-user@ip-172-31-39-221 Java]$ cd ..
+[ec2-user@ip-172-31-39-221 ~]$ mkdir -v five
+mkdir: created directory 'five'
+[ec2-user@ip-172-31-39-221 ~]$ rmdir five
+[ec2-user@ip-172-31-39-221 ~]$ ls
+Java
+[ec2-user@ip-172-31-39-221 ~]$ touch Add.java
+[ec2-user@ip-172-31-39-221 ~]$ vi Add.java
+[ec2-user@ip-172-31-39-221 ~]$ cat Add.java
+class Add {
+    public static void main (String[] args) {
+        int a=10;
+        int b=20;
+        int c=a+b;
+        System.out.println(c);
+    }
+}
+[ec2-user@ip-172-31-39-221 ~]$ mv Add.java Java/
+[ec2-user@ip-172-31-39-221 ~]$ ls Java
+Add.java  Hello.java
+[ec2-user@ip-172-31-39-221 ~]$ ls -lrth
+total 0
+drwxr-xr-x. 2 ec2-user ec2-user 40 Jun 22 01:10 Java
+[ec2-user@ip-172-31-39-221 ~]$ ls -t
+Java
+[ec2-user@ip-172-31-39-221 ~]$
