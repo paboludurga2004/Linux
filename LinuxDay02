@@ -1,0 +1,64 @@
+Linux Day02 commands:-chmod,chown,more,less,head,tail,whereis,nl,cp,find,which
+
+total 8
+drwxr-xr-x. 2 ec2-user ec2-user 40 Jun 22 01:10 Java
+drwxr-xr-x. 2 ec2-user ec2-user  6 Jun 25 05:30 Python
+-rw-r--r--. 1 ec2-user ec2-user 54 Jun 25 05:46 backup.txt
+-rwxr-xr--. 1 ec2-user ec2-user 54 Jun 25 05:32 file1.txt
+[ec2-user@ip-172-31-39-221 ~]$ chmod 754 backup.txt
+[ec2-user@ip-172-31-39-221 ~]$ ls -l
+total 8
+drwxr-xr-x. 2 ec2-user ec2-user 40 Jun 22 01:10 Java
+drwxr-xr-x. 2 ec2-user ec2-user  6 Jun 25 05:30 Python
+-rwxr-xr--. 1 ec2-user ec2-user 54 Jun 25 05:46 backup.txt
+-rwxr-xr--. 1 ec2-user ec2-user 54 Jun 25 05:32 file1.txt
+[ec2-user@ip-172-31-39-221 ~]$ chmod 774 Java
+[ec2-user@ip-172-31-39-221 ~]$ ls -l
+total 8
+drwxrwxr--. 2 ec2-user ec2-user 40 Jun 22 01:10 Java
+drwxr-xr-x. 2 ec2-user ec2-user  6 Jun 25 05:30 Python
+-rwxr-xr--. 1 ec2-user ec2-user 54 Jun 25 05:46 backup.txt
+-rwxr-xr--. 1 ec2-user ec2-user 54 Jun 25 05:32 file1.txt
+[ec2-user@ip-172-31-39-221 ~]$ chmod u-wx file1.txt
+[ec2-user@ip-172-31-39-221 ~]$ ls -l
+total 8
+drwxrwxr--. 2 ec2-user ec2-user 40 Jun 22 01:10 Java
+drwxr-xr-x. 2 ec2-user ec2-user  6 Jun 25 05:30 Python
+-rwxr-xr--. 1 ec2-user ec2-user 54 Jun 25 05:46 backup.txt
+-r--r-xr--. 1 ec2-user ec2-user 54 Jun 25 05:32 file1.txt
+[ec2-user@ip-172-31-39-221 ~]$ chmod u-wx file1.txt
+[ec2-user@ip-172-31-39-221 ~]$ ls -l
+total 8
+drwxrwxr--. 2 ec2-user ec2-user 40 Jun 22 01:10 Java
+drwxr-xr-x. 2 ec2-user ec2-user  6 Jun 25 05:30 Python
+-rwxr-xr--. 1 ec2-user ec2-user 54 Jun 25 05:46 backup.txt
+-r--r-xr--. 1 ec2-user ec2-user 54 Jun 25 05:32 file1.txt
+[ec2-user@ip-172-31-39-221 ~]$ chmod u-wx backup.txt
+[ec2-user@ip-172-31-39-221 ~]$ ls -l
+total 8
+drwxrwxr--. 2 ec2-user ec2-user 40 Jun 22 01:10 Java
+drwxr-xr-x. 2 ec2-user ec2-user  6 Jun 25 05:30 Python
+-r--r-xr--. 1 ec2-user ec2-user 54 Jun 25 05:46 backup.txt
+-r--r-xr--. 1 ec2-user ec2-user 54 Jun 25 05:32 file1.txt
+[ec2-user@ip-172-31-39-221 ~]$ sudo chown durga file1.txt
+chown: invalid user: ‘durga’
+[ec2-user@ip-172-31-39-221 ~]$ sudo chown durga file1.txt
+chown: invalid user: ‘durga’
+[ec2-user@ip-172-31-39-221 ~]$ sudo chown durga:durga file1.txt
+chown: invalid user: ‘durga:durga’
+[ec2-user@ip-172-31-39-221 ~]$ ^C
+[ec2-user@ip-172-31-39-221 ~]$ whoami
+ec2-user
+[ec2-user@ip-172-31-39-221 ~]$ sudo chown ec2-user:ec2-user file1.txt
+[ec2-user@ip-172-31-39-221 ~]$ ls -l
+total 8
+drwxrwxr--. 2 ec2-user ec2-user 40 Jun 22 01:10 Java
+drwxr-xr-x. 2 ec2-user ec2-user  6 Jun 25 05:30 Python
+-r--r-xr--. 1 ec2-user ec2-user 54 Jun 25 05:46 backup.txt
+-r--r-xr--. 1 ec2-user ec2-user 54 Jun 25 05:32 file1.txt
+[ec2-user@ip-172-31-39-221 ~]$ Read from remote host ec2-13-207-201-201.ap-south-1.compute.amazonaws.com: Connection reset by peer
+Connection to ec2-13-207-201-201.ap-south-1.compute.amazonaws.com closed.
+client_loop: send disconnect: Connection reset by peer
+
+durga@DESKTOP-QUFM23U MINGW64 /c/Users/Durga/Downloads (master)
+$
