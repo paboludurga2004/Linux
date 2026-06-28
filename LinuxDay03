@@ -1,0 +1,129 @@
+In Day03 i have practiced commands:-chmod,chown,umask,diff,echo,useradd,userdel,passwd,groupadd,groupdel
+
+[ec2-user@ip-172-31-39-221 ~]$
+[ec2-user@ip-172-31-39-221 ~]$
+[ec2-user@ip-172-31-39-221 ~]$
+[ec2-user@ip-172-31-39-221 ~]$
+[ec2-user@ip-172-31-39-221 ~]$
+[ec2-user@ip-172-31-39-221 ~]$
+[ec2-user@ip-172-31-39-221 ~]$
+[ec2-user@ip-172-31-39-221 ~]$
+[ec2-user@ip-172-31-39-221 ~]$
+[ec2-user@ip-172-31-39-221 ~]$
+[ec2-user@ip-172-31-39-221 ~]$ ls -l
+total 8
+drwxrwxr--. 2 ec2-user ec2-user 40 Jun 22 01:10 Java
+drwxr-xr-x. 2 ec2-user ec2-user  6 Jun 25 05:30 Python
+-r--r-xr--. 1 ec2-user ec2-user 54 Jun 25 05:46 backup.txt
+-r--r-xr--. 1 ec2-user ec2-user 54 Jun 25 05:32 file1.txt
+[ec2-user@ip-172-31-39-221 ~]$ chmod 777 file1.txt
+[ec2-user@ip-172-31-39-221 ~]$ ls -l
+total 8
+drwxrwxr--. 2 ec2-user ec2-user 40 Jun 22 01:10 Java
+drwxr-xr-x. 2 ec2-user ec2-user  6 Jun 25 05:30 Python
+-r--r-xr--. 1 ec2-user ec2-user 54 Jun 25 05:46 backup.txt
+-rwxrwxrwx. 1 ec2-user ec2-user 54 Jun 25 05:32 file1.txt
+[ec2-user@ip-172-31-39-221 ~]$ chmod 755 file1.txt
+[ec2-user@ip-172-31-39-221 ~]$ ls -l
+total 8
+drwxrwxr--. 2 ec2-user ec2-user 40 Jun 22 01:10 Java
+drwxr-xr-x. 2 ec2-user ec2-user  6 Jun 25 05:30 Python
+-r--r-xr--. 1 ec2-user ec2-user 54 Jun 25 05:46 backup.txt
+-rwxr-xr-x. 1 ec2-user ec2-user 54 Jun 25 05:32 file1.txt
+[ec2-user@ip-172-31-39-221 ~]$ sudo chown ec2-user file1.txt
+[ec2-user@ip-172-31-39-221 ~]$ ls -l
+total 8
+drwxrwxr--. 2 ec2-user ec2-user 40 Jun 22 01:10 Java
+drwxr-xr-x. 2 ec2-user ec2-user  6 Jun 25 05:30 Python
+-r--r-xr--. 1 ec2-user ec2-user 54 Jun 25 05:46 backup.txt
+-rwxr-xr-x. 1 ec2-user ec2-user 54 Jun 25 05:32 file1.txt
+[ec2-user@ip-172-31-39-221 ~]$ sudo useradd durga
+[ec2-user@ip-172-31-39-221 ~]$
+[ec2-user@ip-172-31-39-221 ~]$ sudo passwd durga
+New password:
+BAD PASSWORD: The password contains the user name in some form
+Retype new password:
+passwd: password updated successfully
+[ec2-user@ip-172-31-39-221 ~]$ sudo chown durga:durga file1.txt
+[ec2-user@ip-172-31-39-221 ~]$ ls -l
+total 8
+drwxrwxr--. 2 ec2-user ec2-user 40 Jun 22 01:10 Java
+drwxr-xr-x. 2 ec2-user ec2-user  6 Jun 25 05:30 Python
+-r--r-xr--. 1 ec2-user ec2-user 54 Jun 25 05:46 backup.txt
+-rwxr-xr-x. 1 durga    durga    54 Jun 25 05:32 file1.txt
+[ec2-user@ip-172-31-39-221 ~]$ id
+uid=1000(ec2-user) gid=1000(ec2-user) groups=1000(ec2-user),4(adm),190(systemd-journal) context=unconfined_u:unconfined_r:unconfined_t:s0-s0:c0.c1023
+[ec2-user@ip-172-31-39-221 ~]$ groups
+ec2-user adm systemd-journal
+[ec2-user@ip-172-31-39-221 ~]$ sudo chown ec2-user:ec2-user file1.txt
+[ec2-user@ip-172-31-39-221 ~]$ ls -l
+total 8
+drwxrwxr--. 2 ec2-user ec2-user 40 Jun 22 01:10 Java
+drwxr-xr-x. 2 ec2-user ec2-user  6 Jun 25 05:30 Python
+-r--r-xr--. 1 ec2-user ec2-user 54 Jun 25 05:46 backup.txt
+-rwxr-xr-x. 1 ec2-user ec2-user 54 Jun 25 05:32 file1.txt
+[ec2-user@ip-172-31-39-221 ~]$ umask
+0022
+[ec2-user@ip-172-31-39-221 ~]$ chmod go+w file1.txt
+[ec2-user@ip-172-31-39-221 ~]$ ls -l
+total 8
+drwxrwxr--. 2 ec2-user ec2-user 40 Jun 22 01:10 Java
+drwxr-xr-x. 2 ec2-user ec2-user  6 Jun 25 05:30 Python
+-r--r-xr--. 1 ec2-user ec2-user 54 Jun 25 05:46 backup.txt
+-rwxrwxrwx. 1 ec2-user ec2-user 54 Jun 25 05:32 file1.txt
+[ec2-user@ip-172-31-39-221 ~]$ chmod go-w file1.txt
+[ec2-user@ip-172-31-39-221 ~]$ ls -l
+total 8
+drwxrwxr--. 2 ec2-user ec2-user 40 Jun 22 01:10 Java
+drwxr-xr-x. 2 ec2-user ec2-user  6 Jun 25 05:30 Python
+-r--r-xr--. 1 ec2-user ec2-user 54 Jun 25 05:46 backup.txt
+-rwxr-xr-x. 1 ec2-user ec2-user 54 Jun 25 05:32 file1.txt
+[ec2-user@ip-172-31-39-221 ~]$ sudo userdel durga
+[ec2-user@ip-172-31-39-221 ~]$ sudo groupadd durga
+[ec2-user@ip-172-31-39-221 ~]$ sudo chgrp durga file1.txt
+[ec2-user@ip-172-31-39-221 ~]$ ls -l
+total 8
+drwxrwxr--. 2 ec2-user ec2-user 40 Jun 22 01:10 Java
+drwxr-xr-x. 2 ec2-user ec2-user  6 Jun 25 05:30 Python
+-r--r-xr--. 1 ec2-user ec2-user 54 Jun 25 05:46 backup.txt
+-rwxr-xr-x. 1 ec2-user durga    54 Jun 25 05:32 file1.txt
+[ec2-user@ip-172-31-39-221 ~]$ sudo chgrp ec2-user file1.txt
+[ec2-user@ip-172-31-39-221 ~]$ ls -l
+total 8
+drwxrwxr--. 2 ec2-user ec2-user 40 Jun 22 01:10 Java
+drwxr-xr-x. 2 ec2-user ec2-user  6 Jun 25 05:30 Python
+-r--r-xr--. 1 ec2-user ec2-user 54 Jun 25 05:46 backup.txt
+-rwxr-xr-x. 1 ec2-user ec2-user 54 Jun 25 05:32 file1.txt
+[ec2-user@ip-172-31-39-221 ~]$ sudo userdel durga
+userdel: user 'durga' does not exist
+[ec2-user@ip-172-31-39-221 ~]$ sudo groupdel durga
+[ec2-user@ip-172-31-39-221 ~]$ ls -l file1.txt
+-rwxr-xr-x. 1 ec2-user ec2-user 54 Jun 25 05:32 file1.txt
+[ec2-user@ip-172-31-39-221 ~]$ umask 022
+[ec2-user@ip-172-31-39-221 ~]$ echo hello
+hello
+[ec2-user@ip-172-31-39-221 ~]$ echo "Welcome to linux"
+Welcome to linux
+[ec2-user@ip-172-31-39-221 ~]$ echo 100
+100
+[ec2-user@ip-172-31-39-221 ~]$ echo $USER
+ec2-user
+[ec2-user@ip-172-31-39-221 ~]$ echo $PWD
+/home/ec2-user
+[ec2-user@ip-172-31-39-221 ~]$ echo "Hello Linux" > file1.txt
+[ec2-user@ip-172-31-39-221 ~]$ cat file1.txt
+Hello Linux
+[ec2-user@ip-172-31-39-221 ~]$ echo "Second Line" >> file1.txt
+[ec2-user@ip-172-31-39-221 ~]$ cat file1.txt
+Hello Linux
+Second Line
+[ec2-user@ip-172-31-39-221 ~]$ echo -e "Java\nPython\nLinux"
+Java
+Python
+Linux
+[ec2-user@ip-172-31-39-221 ~]$ diff file1.txt backup.txt
+1,2c1,2
+< Hello Linux
+< Second Line
+---
+> Networking:-which uses to interconnect with devices.
