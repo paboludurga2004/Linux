@@ -1,0 +1,756 @@
+In Day04 I have practiced Linux commands:-grep,wc,sort,cut,awk,sed,|,>,>>,<,tr,ping,ifconfig,ip,netstat,
+ss,nslookup,dig,curl,wget,hostname,uptime,cal,date,free -h,df -h,du -sh
+
+[ec2-user@ip-172-31-39-221 ~]$
+[ec2-user@ip-172-31-39-221 ~]$
+[ec2-user@ip-172-31-39-221 ~]$
+[ec2-user@ip-172-31-39-221 ~]$
+[ec2-user@ip-172-31-39-221 ~]$
+[ec2-user@ip-172-31-39-221 ~]$
+[ec2-user@ip-172-31-39-221 ~]$
+[ec2-user@ip-172-31-39-221 ~]$ wc -l file1.txt
+2 file1.txt
+[ec2-user@ip-172-31-39-221 ~]$ wc -w file1.txt
+4 file1.txt
+[ec2-user@ip-172-31-39-221 ~]$ wc -y file1.txt
+wc: invalid option -- 'y'
+Try 'wc --help' for more information.
+[ec2-user@ip-172-31-39-221 ~]$ wc -c file1.txt
+24 file1.txt
+[ec2-user@ip-172-31-39-221 ~]$ wc -m file1.txt
+24 file1.txt
+[ec2-user@ip-172-31-39-221 ~]$ sort  file1.txt
+Hello Linux
+Second Line
+[ec2-user@ip-172-31-39-221 ~]$ sort -n file1.txt
+Hello Linux
+Second Line
+[ec2-user@ip-172-31-39-221 ~]$ sort -r file1.txt
+Second Line
+Hello Linux
+[ec2-user@ip-172-31-39-221 ~]$ sort -u file1.txt
+Hello Linux
+Second Line
+[ec2-user@ip-172-31-39-221 ~]$ grep "Linux" file1.txt
+Hello Linux
+[ec2-user@ip-172-31-39-221 ~]$ grep -c "Linux" file1.txt
+1
+[ec2-user@ip-172-31-39-221 ~]$ grep -n "Linux" file1.txt
+1:Hello Linux
+[ec2-user@ip-172-31-39-221 ~]$ grep -r "main".
+Java/Hello.java:    public static void main (String[] args) {
+Java/Add.java:    public static void main (String[] args) {
+[ec2-user@ip-172-31-39-221 ~]$ grep -i "Linux" file1.txt
+Hello Linux
+[ec2-user@ip-172-31-39-221 ~]$ echo "linux" | tr 'a-z' 'A-Z'
+LINUX
+[ec2-user@ip-172-31-39-221 ~]$ echo "LINUX" | tr 'A-Z' 'a-z'
+linux
+[ec2-user@ip-172-31-39-221 ~]$ echo abc123 | tr '0-9'
+tr: missing operand after ‘0-9’
+Two strings must be given when translating.
+Try 'tr --help' for more information.
+[ec2-user@ip-172-31-39-221 ~]$ echo abc123 | tr -d '0-9'
+abc
+[ec2-user@ip-172-31-39-221 ~]$ awk '{print $1}' file1.txt
+Hello
+Second
+[ec2-user@ip-172-31-39-221 ~]$ awk '{print $2}' file1.txt
+Linux
+Line
+[ec2-user@ip-172-31-39-221 ~]$ awk '{print $1 $2}' file1.txt
+HelloLinux
+SecondLine
+[ec2-user@ip-172-31-39-221 ~]$ awk -F ":" '{print $2}' file1.txt
+
+
+[ec2-user@ip-172-31-39-221 ~]$ touch students.txt
+[ec2-user@ip-172-31-39-221 ~]$ vi students.txt
+[ec2-user@ip-172-31-39-221 ~]$ cut -d ":" -f2 students.txt
+Durga
+Ravi
+Anu
+[ec2-user@ip-172-31-39-221 ~]$ ^C
+[ec2-user@ip-172-31-39-221 ~]$ cut -f ":" -f2 students.txt
+cut: only one type of list may be specified
+Try 'cut --help' for more information.
+[ec2-user@ip-172-31-39-221 ~]$ cd Java/
+[ec2-user@ip-172-31-39-221 Java]$ Python/
+-bash: Python/: No such file or directory
+[ec2-user@ip-172-31-39-221 Java]$ cd Python
+-bash: cd: Python: No such file or directory
+[ec2-user@ip-172-31-39-221 Java]$ mkdir Python
+[ec2-user@ip-172-31-39-221 Java]$ cd Python/
+[ec2-user@ip-172-31-39-221 Python]$ cd ..
+[ec2-user@ip-172-31-39-221 Java]$ cd ..
+[ec2-user@ip-172-31-39-221 ~]$ sed 's/Java/Python' file1.txt
+sed: -e expression #1, char 13: unterminated `s' command
+[ec2-user@ip-172-31-39-221 ~]$ ^C
+[ec2-user@ip-172-31-39-221 ~]$ sed 's/Java/Python/' file1.txt
+Hello Linux
+Second Line
+[ec2-user@ip-172-31-39-221 ~]$ sed 'Java/Python/g' file1.txt
+sed: -e expression #1, char 1: unknown command: `J'
+[ec2-user@ip-172-31-39-221 ~]$ ^C
+[ec2-user@ip-172-31-39-221 ~]$ sed 's/
+>
+> ^C
+[ec2-user@ip-172-31-39-221 ~]$ sed 's/Java/Python/g' file1.txt
+Hello Linux
+Second Line
+[ec2-user@ip-172-31-39-221 ~]$ ls | wc -l
+5
+[ec2-user@ip-172-31-39-221 ~]$ ls | grep Java
+Java
+[ec2-user@ip-172-31-39-221 ~]$ cat file1.txt | grep "Linux" | wc -l
+1
+[ec2-user@ip-172-31-39-221 ~]$ cat students.txt | sort
+101:Durga:Java
+102:Ravi:Python
+103:Anu:Linux
+[ec2-user@ip-172-31-39-221 ~]$ hostname
+ip-172-31-39-221.ap-south-1.compute.internal
+[ec2-user@ip-172-31-39-221 ~]$ ifconfig
+-bash: ifconfig: command not found
+[ec2-user@ip-172-31-39-221 ~]$ date
+Mon Jun 29 02:15:10 UTC 2026
+[ec2-user@ip-172-31-39-221 ~]$ cal
+      June 2026
+Su Mo Tu We Th Fr Sa
+    1  2  3  4  5  6
+ 7  8  9 10 11 12 13
+14 15 16 17 18 19 20
+21 22 23 24 25 26 27
+28 29 30
+
+[ec2-user@ip-172-31-39-221 ~]$ uptime
+ 02:15:21 up 3 days, 20:50,  1 user,  load average: 0.00, 0.00, 0.00
+[ec2-user@ip-172-31-39-221 ~]$ free -h
+               total        used        free      shared  buff/cache   available
+Mem:           906Mi       334Mi       320Mi        11Mi       364Mi       572Mi
+Swap:             0B          0B          0B
+[ec2-user@ip-172-31-39-221 ~]$ df -h
+Filesystem      Size  Used Avail Use% Mounted on
+/dev/nvme0n1p3  9.8G  3.0G  6.9G  31% /
+devtmpfs        346M     0  346M   0% /dev
+tmpfs           454M     0  454M   0% /dev/shm
+efivarfs        128K  3.3K  120K   3% /sys/firmware/efi/efivars
+tmpfs           182M  9.6M  172M   6% /run
+tmpfs           1.0M     0  1.0M   0% /run/credentials/systemd-journald.service
+/dev/nvme0n1p2  200M  9.0M  191M   5% /boot/efi
+tmpfs           1.0M     0  1.0M   0% /run/credentials/getty@tty1.service
+tmpfs           1.0M     0  1.0M   0% /run/credentials/serial-getty@ttyS0.service
+tmpfs            91M   12K   91M   1% /run/user/1000
+[ec2-user@ip-172-31-39-221 ~]$ du -sh
+44K     .
+[ec2-user@ip-172-31-39-221 ~]$ netstat
+-bash: netstat: command not found
+[ec2-user@ip-172-31-39-221 ~]$ ping google.com
+PING google.com (142.250.143.138) 56(84) bytes of data.
+64 bytes from pt-in-f138.1e100.net (142.250.143.138): icmp_seq=1 ttl=110 time=1.90 ms
+64 bytes from pt-in-f138.1e100.net (142.250.143.138): icmp_seq=2 ttl=110 time=1.88 ms
+64 bytes from pt-in-f138.1e100.net (142.250.143.138): icmp_seq=3 ttl=110 time=1.92 ms
+64 bytes from pt-in-f138.1e100.net (142.250.143.138): icmp_seq=4 ttl=110 time=1.86 ms
+64 bytes from pt-in-f138.1e100.net (142.250.143.138): icmp_seq=5 ttl=110 time=1.92 ms
+64 bytes from pt-in-f138.1e100.net (142.250.143.138): icmp_seq=6 ttl=110 time=1.86 ms
+64 bytes from pt-in-f138.1e100.net (142.250.143.138): icmp_seq=7 ttl=110 time=1.92 ms
+64 bytes from pt-in-f138.1e100.net (142.250.143.138): icmp_seq=8 ttl=110 time=1.86 ms
+64 bytes from pt-in-f138.1e100.net (142.250.143.138): icmp_seq=9 ttl=110 time=1.86 ms
+64 bytes from pt-in-f138.1e100.net (142.250.143.138): icmp_seq=10 ttl=110 time=1.83 ms
+64 bytes from pt-in-f138.1e100.net (142.250.143.138): icmp_seq=11 ttl=110 time=2.51 ms
+64 bytes from pt-in-f138.1e100.net (142.250.143.138): icmp_seq=12 ttl=110 time=1.93 ms
+64 bytes from pt-in-f138.1e100.net (142.250.143.138): icmp_seq=13 ttl=110 time=1.93 ms
+64 bytes from pt-in-f138.1e100.net (142.250.143.138): icmp_seq=14 ttl=110 time=1.93 ms
+64 bytes from pt-in-f138.1e100.net (142.250.143.138): icmp_seq=15 ttl=110 time=1.87 ms
+64 bytes from pt-in-f138.1e100.net (142.250.143.138): icmp_seq=16 ttl=110 time=1.91 ms
+64 bytes from pt-in-f138.1e100.net (142.250.143.138): icmp_seq=17 ttl=110 time=1.86 ms
+64 bytes from pt-in-f138.1e100.net (142.250.143.138): icmp_seq=18 ttl=110 time=1.93 ms
+64 bytes from pt-in-f138.1e100.net (142.250.143.138): icmp_seq=19 ttl=110 time=1.85 ms
+64 bytes from pt-in-f138.1e100.net (142.250.143.138): icmp_seq=20 ttl=110 time=1.87 ms
+64 bytes from pt-in-f138.1e100.net (142.250.143.138): icmp_seq=21 ttl=110 time=1.86 ms
+64 bytes from pt-in-f138.1e100.net (142.250.143.138): icmp_seq=22 ttl=110 time=1.92 ms
+64 bytes from pt-in-f138.1e100.net (142.250.143.138): icmp_seq=23 ttl=110 time=1.92 ms
+64 bytes from pt-in-f138.1e100.net (142.250.143.138): icmp_seq=24 ttl=110 time=1.98 ms
+64 bytes from pt-in-f138.1e100.net (142.250.143.138): icmp_seq=25 ttl=110 time=1.87 ms
+64 bytes from pt-in-f138.1e100.net (142.250.143.138): icmp_seq=26 ttl=110 time=1.85 ms
+64 bytes from pt-in-f138.1e100.net (142.250.143.138): icmp_seq=27 ttl=110 time=1.87 ms
+64 bytes from pt-in-f138.1e100.net (142.250.143.138): icmp_seq=28 ttl=110 time=1.87 ms
+64 bytes from pt-in-f138.1e100.net (142.250.143.138): icmp_seq=29 ttl=110 time=1.87 ms
+64 bytes from pt-in-f138.1e100.net (142.250.143.138): icmp_seq=30 ttl=110 time=1.86 ms
+64 bytes from pt-in-f138.1e100.net (142.250.143.138): icmp_seq=31 ttl=110 time=1.85 ms
+64 bytes from pt-in-f138.1e100.net (142.250.143.138): icmp_seq=32 ttl=110 time=1.93 ms
+64 bytes from pt-in-f138.1e100.net (142.250.143.138): icmp_seq=33 ttl=110 time=1.92 ms
+64 bytes from pt-in-f138.1e100.net (142.250.143.138): icmp_seq=34 ttl=110 time=1.91 ms
+64 bytes from pt-in-f138.1e100.net (142.250.143.138): icmp_seq=35 ttl=110 time=1.92 ms
+64 bytes from pt-in-f138.1e100.net (142.250.143.138): icmp_seq=36 ttl=110 time=1.88 ms
+64 bytes from pt-in-f138.1e100.net (142.250.143.138): icmp_seq=37 ttl=110 time=1.92 ms
+64 bytes from pt-in-f138.1e100.net (142.250.143.138): icmp_seq=38 ttl=110 time=1.93 ms
+64 bytes from pt-in-f138.1e100.net (142.250.143.138): icmp_seq=39 ttl=110 time=1.87 ms
+64 bytes from pt-in-f138.1e100.net (142.250.143.138): icmp_seq=40 ttl=110 time=1.97 ms
+64 bytes from pt-in-f138.1e100.net (142.250.143.138): icmp_seq=41 ttl=110 time=1.86 ms
+64 bytes from pt-in-f138.1e100.net (142.250.143.138): icmp_seq=42 ttl=110 time=1.85 ms
+64 bytes from pt-in-f138.1e100.net (142.250.143.138): icmp_seq=43 ttl=110 time=1.93 ms
+64 bytes from pt-in-f138.1e100.net (142.250.143.138): icmp_seq=44 ttl=110 time=1.94 ms
+64 bytes from pt-in-f138.1e100.net (142.250.143.138): icmp_seq=45 ttl=110 time=1.93 ms
+64 bytes from pt-in-f138.1e100.net (142.250.143.138): icmp_seq=46 ttl=110 time=1.94 ms
+64 bytes from pt-in-f138.1e100.net (142.250.143.138): icmp_seq=47 ttl=110 time=1.95 ms
+64 bytes from pt-in-f138.1e100.net (142.250.143.138): icmp_seq=48 ttl=110 time=1.83 ms
+64 bytes from pt-in-f138.1e100.net (142.250.143.138): icmp_seq=49 ttl=110 time=1.86 ms
+64 bytes from pt-in-f138.1e100.net (142.250.143.138): icmp_seq=50 ttl=110 time=1.87 ms
+64 bytes from pt-in-f138.1e100.net (142.250.143.138): icmp_seq=51 ttl=110 time=1.87 ms
+64 bytes from pt-in-f138.1e100.net (142.250.143.138): icmp_seq=52 ttl=110 time=1.85 ms
+64 bytes from pt-in-f138.1e100.net (142.250.143.138): icmp_seq=53 ttl=110 time=1.99 ms
+64 bytes from pt-in-f138.1e100.net (142.250.143.138): icmp_seq=54 ttl=110 time=1.87 ms
+64 bytes from pt-in-f138.1e100.net (142.250.143.138): icmp_seq=55 ttl=110 time=1.88 ms
+64 bytes from pt-in-f138.1e100.net (142.250.143.138): icmp_seq=56 ttl=110 time=1.86 ms
+64 bytes from pt-in-f138.1e100.net (142.250.143.138): icmp_seq=57 ttl=110 time=1.86 ms
+64 bytes from pt-in-f138.1e100.net (142.250.143.138): icmp_seq=58 ttl=110 time=1.86 ms
+64 bytes from pt-in-f138.1e100.net (142.250.143.138): icmp_seq=59 ttl=110 time=1.94 ms
+64 bytes from pt-in-f138.1e100.net (142.250.143.138): icmp_seq=60 ttl=110 time=1.87 ms
+64 bytes from pt-in-f138.1e100.net (142.250.143.138): icmp_seq=61 ttl=110 time=1.87 ms
+64 bytes from pt-in-f138.1e100.net (142.250.143.138): icmp_seq=62 ttl=110 time=1.87 ms
+64 bytes from pt-in-f138.1e100.net (142.250.143.138): icmp_seq=63 ttl=110 time=1.88 ms
+64 bytes from pt-in-f138.1e100.net (142.250.143.138): icmp_seq=64 ttl=110 time=1.92 ms
+64 bytes from pt-in-f138.1e100.net (142.250.143.138): icmp_seq=65 ttl=110 time=1.91 ms
+64 bytes from pt-in-f138.1e100.net (142.250.143.138): icmp_seq=66 ttl=110 time=1.92 ms
+64 bytes from pt-in-f138.1e100.net (142.250.143.138): icmp_seq=67 ttl=110 time=1.86 ms
+64 bytes from pt-in-f138.1e100.net (142.250.143.138): icmp_seq=68 ttl=110 time=1.87 ms
+64 bytes from pt-in-f138.1e100.net (142.250.143.138): icmp_seq=69 ttl=110 time=1.87 ms
+64 bytes from pt-in-f138.1e100.net (142.250.143.138): icmp_seq=70 ttl=110 time=1.86 ms
+64 bytes from pt-in-f138.1e100.net (142.250.143.138): icmp_seq=71 ttl=110 time=1.92 ms
+64 bytes from pt-in-f138.1e100.net (142.250.143.138): icmp_seq=72 ttl=110 time=1.86 ms
+64 bytes from pt-in-f138.1e100.net (142.250.143.138): icmp_seq=73 ttl=110 time=1.93 ms
+64 bytes from pt-in-f138.1e100.net (142.250.143.138): icmp_seq=74 ttl=110 time=1.96 ms
+64 bytes from pt-in-f138.1e100.net (142.250.143.138): icmp_seq=75 ttl=110 time=1.86 ms
+64 bytes from pt-in-f138.1e100.net (142.250.143.138): icmp_seq=76 ttl=110 time=1.94 ms
+64 bytes from pt-in-f138.1e100.net (142.250.143.138): icmp_seq=77 ttl=110 time=1.87 ms
+64 bytes from pt-in-f138.1e100.net (142.250.143.138): icmp_seq=78 ttl=110 time=1.95 ms
+64 bytes from pt-in-f138.1e100.net (142.250.143.138): icmp_seq=79 ttl=110 time=1.87 ms
+64 bytes from pt-in-f138.1e100.net (142.250.143.138): icmp_seq=80 ttl=110 time=1.86 ms
+64 bytes from pt-in-f138.1e100.net (142.250.143.138): icmp_seq=81 ttl=110 time=1.87 ms
+64 bytes from pt-in-f138.1e100.net (142.250.143.138): icmp_seq=82 ttl=110 time=1.87 ms
+64 bytes from pt-in-f138.1e100.net (142.250.143.138): icmp_seq=83 ttl=110 time=1.86 ms
+64 bytes from pt-in-f138.1e100.net (142.250.143.138): icmp_seq=84 ttl=110 time=1.85 ms
+64 bytes from pt-in-f138.1e100.net (142.250.143.138): icmp_seq=85 ttl=110 time=1.88 ms
+64 bytes from pt-in-f138.1e100.net (142.250.143.138): icmp_seq=86 ttl=110 time=1.84 ms
+64 bytes from pt-in-f138.1e100.net (142.250.143.138): icmp_seq=87 ttl=110 time=1.86 ms
+64 bytes from pt-in-f138.1e100.net (142.250.143.138): icmp_seq=88 ttl=110 time=1.93 ms
+64 bytes from pt-in-f138.1e100.net (142.250.143.138): icmp_seq=89 ttl=110 time=1.94 ms
+64 bytes from pt-in-f138.1e100.net (142.250.143.138): icmp_seq=90 ttl=110 time=1.87 ms
+64 bytes from pt-in-f138.1e100.net (142.250.143.138): icmp_seq=91 ttl=110 time=1.86 ms
+64 bytes from pt-in-f138.1e100.net (142.250.143.138): icmp_seq=92 ttl=110 time=1.93 ms
+64 bytes from pt-in-f138.1e100.net (142.250.143.138): icmp_seq=93 ttl=110 time=1.85 ms
+64 bytes from pt-in-f138.1e100.net (142.250.143.138): icmp_seq=94 ttl=110 time=1.86 ms
+64 bytes from pt-in-f138.1e100.net (142.250.143.138): icmp_seq=95 ttl=110 time=1.94 ms
+64 bytes from pt-in-f138.1e100.net (142.250.143.138): icmp_seq=96 ttl=110 time=1.94 ms
+64 bytes from pt-in-f138.1e100.net (142.250.143.138): icmp_seq=97 ttl=110 time=1.84 ms
+64 bytes from pt-in-f138.1e100.net (142.250.143.138): icmp_seq=98 ttl=110 time=1.86 ms
+64 bytes from pt-in-f138.1e100.net (142.250.143.138): icmp_seq=99 ttl=110 time=1.95 ms
+64 bytes from pt-in-f138.1e100.net (142.250.143.138): icmp_seq=100 ttl=110 time=1.86 ms
+64 bytes from pt-in-f138.1e100.net (142.250.143.138): icmp_seq=101 ttl=110 time=1.95 ms
+64 bytes from pt-in-f138.1e100.net (142.250.143.138): icmp_seq=102 ttl=110 time=1.94 ms
+64 bytes from pt-in-f138.1e100.net (142.250.143.138): icmp_seq=103 ttl=110 time=1.85 ms
+64 bytes from pt-in-f138.1e100.net (142.250.143.138): icmp_seq=104 ttl=110 time=1.86 ms
+64 bytes from pt-in-f138.1e100.net (142.250.143.138): icmp_seq=105 ttl=110 time=1.90 ms
+64 bytes from pt-in-f138.1e100.net (142.250.143.138): icmp_seq=106 ttl=110 time=1.87 ms
+64 bytes from pt-in-f138.1e100.net (142.250.143.138): icmp_seq=107 ttl=110 time=1.94 ms
+64 bytes from pt-in-f138.1e100.net (142.250.143.138): icmp_seq=108 ttl=110 time=1.84 ms
+64 bytes from pt-in-f138.1e100.net (142.250.143.138): icmp_seq=109 ttl=110 time=1.86 ms
+64 bytes from pt-in-f138.1e100.net (142.250.143.138): icmp_seq=110 ttl=110 time=1.86 ms
+64 bytes from pt-in-f138.1e100.net (142.250.143.138): icmp_seq=111 ttl=110 time=1.86 ms
+64 bytes from pt-in-f138.1e100.net (142.250.143.138): icmp_seq=112 ttl=110 time=1.87 ms
+64 bytes from pt-in-f138.1e100.net (142.250.143.138): icmp_seq=113 ttl=110 time=1.86 ms
+64 bytes from pt-in-f138.1e100.net (142.250.143.138): icmp_seq=114 ttl=110 time=1.94 ms
+64 bytes from pt-in-f138.1e100.net (142.250.143.138): icmp_seq=115 ttl=110 time=1.93 ms
+64 bytes from pt-in-f138.1e100.net (142.250.143.138): icmp_seq=116 ttl=110 time=1.87 ms
+64 bytes from pt-in-f138.1e100.net (142.250.143.138): icmp_seq=117 ttl=110 time=1.92 ms
+64 bytes from pt-in-f138.1e100.net (142.250.143.138): icmp_seq=118 ttl=110 time=1.87 ms
+64 bytes from pt-in-f138.1e100.net (142.250.143.138): icmp_seq=119 ttl=110 time=1.85 ms
+64 bytes from pt-in-f138.1e100.net (142.250.143.138): icmp_seq=120 ttl=110 time=1.87 ms
+64 bytes from pt-in-f138.1e100.net (142.250.143.138): icmp_seq=121 ttl=110 time=1.88 ms
+64 bytes from pt-in-f138.1e100.net (142.250.143.138): icmp_seq=122 ttl=110 time=1.86 ms
+64 bytes from pt-in-f138.1e100.net (142.250.143.138): icmp_seq=123 ttl=110 time=1.87 ms
+64 bytes from pt-in-f138.1e100.net (142.250.143.138): icmp_seq=124 ttl=110 time=1.85 ms
+64 bytes from pt-in-f138.1e100.net (142.250.143.138): icmp_seq=125 ttl=110 time=1.86 ms
+64 bytes from pt-in-f138.1e100.net (142.250.143.138): icmp_seq=126 ttl=110 time=1.87 ms
+64 bytes from pt-in-f138.1e100.net (142.250.143.138): icmp_seq=127 ttl=110 time=1.86 ms
+64 bytes from pt-in-f138.1e100.net (142.250.143.138): icmp_seq=128 ttl=110 time=1.93 ms
+64 bytes from pt-in-f138.1e100.net (142.250.143.138): icmp_seq=129 ttl=110 time=1.88 ms
+64 bytes from pt-in-f138.1e100.net (142.250.143.138): icmp_seq=130 ttl=110 time=1.88 ms
+64 bytes from pt-in-f138.1e100.net (142.250.143.138): icmp_seq=131 ttl=110 time=1.85 ms
+64 bytes from pt-in-f138.1e100.net (142.250.143.138): icmp_seq=132 ttl=110 time=1.86 ms
+64 bytes from pt-in-f138.1e100.net (142.250.143.138): icmp_seq=133 ttl=110 time=1.94 ms
+^C
+--- google.com ping statistics ---
+133 packets transmitted, 133 received, 0% packet loss, time 132228ms
+rtt min/avg/max/mdev = 1.831/1.893/2.514/0.065 ms
+[ec2-user@ip-172-31-39-221 ~]$ ping hostname
+ping: hostname: Name or service not known
+[ec2-user@ip-172-31-39-221 ~]$ ping -c 4 google.com
+PING google.com (142.250.71.110) 56(84) bytes of data.
+64 bytes from pnbomb-ad-in-f14.1e100.net (142.250.71.110): icmp_seq=1 ttl=117 time=2.01 ms
+64 bytes from pnbomb-ad-in-f14.1e100.net (142.250.71.110): icmp_seq=2 ttl=117 time=2.02 ms
+64 bytes from pnbomb-ad-in-f14.1e100.net (142.250.71.110): icmp_seq=3 ttl=117 time=2.04 ms
+64 bytes from pnbomb-ad-in-f14.1e100.net (142.250.71.110): icmp_seq=4 ttl=117 time=2.05 ms
+
+--- google.com ping statistics ---
+4 packets transmitted, 4 received, 0% packet loss, time 3004ms
+rtt min/avg/max/mdev = 2.011/2.031/2.054/0.016 ms
+[ec2-user@ip-172-31-39-221 ~]$ ip addr
+1: lo: <LOOPBACK,UP,LOWER_UP> mtu 65536 qdisc noqueue state UNKNOWN group default qlen 1000
+    link/loopback 00:00:00:00:00:00 brd 00:00:00:00:00:00
+    inet 127.0.0.1/8 scope host lo
+       valid_lft forever preferred_lft forever
+    inet6 ::1/128 scope host noprefixroute
+       valid_lft forever preferred_lft forever
+2: ens5: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 9001 qdisc mq state UP group default qlen 1000
+    link/ether 02:b7:49:6e:3b:a9 brd ff:ff:ff:ff:ff:ff
+    altname enp0s5
+    altname enx02b7496e3ba9
+    inet 172.31.39.221/20 brd 172.31.47.255 scope global dynamic noprefixroute ens5
+       valid_lft 1908sec preferred_lft 1908sec
+    inet6 fe80::b7:49ff:fe6e:3ba9/64 scope link noprefixroute
+       valid_lft forever preferred_lft forever
+[ec2-user@ip-172-31-39-221 ~]$ ip route
+default via 172.31.32.1 dev ens5 proto dhcp src 172.31.39.221 metric 100
+172.31.32.0/20 dev ens5 proto kernel scope link src 172.31.39.221 metric 100
+[ec2-user@ip-172-31-39-221 ~]$ ip link
+1: lo: <LOOPBACK,UP,LOWER_UP> mtu 65536 qdisc noqueue state UNKNOWN mode DEFAULT group default qlen 1000
+    link/loopback 00:00:00:00:00:00 brd 00:00:00:00:00:00
+2: ens5: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 9001 qdisc mq state UP mode DEFAULT group default qlen 1000
+    link/ether 02:b7:49:6e:3b:a9 brd ff:ff:ff:ff:ff:ff
+    altname enp0s5
+    altname enx02b7496e3ba9
+[ec2-user@ip-172-31-39-221 ~]$ netstat -tuln
+-bash: netstat: command not found
+[ec2-user@ip-172-31-39-221 ~]$ ^C
+[ec2-user@ip-172-31-39-221 ~]$ sudo dnf install net-tools
+Updating Subscription Management repositories.
+Unable to read consumer identity
+
+This system is not registered with an entitlement server. You can use "rhc" or "subscription-manager" to register.
+
+Last metadata expiration check: 1:27:20 ago on Mon Jun 29 01:00:47 2026.
+Dependencies resolved.
+============================================================================================================================================================================
+ Package                           Architecture                   Version                                            Repository                                        Size
+============================================================================================================================================================================
+Installing:
+ net-tools                         x86_64                         2.0-0.73.20160912git.el10                          rhel-10-baseos-rhui-rpms                         310 k
+
+Transaction Summary
+============================================================================================================================================================================
+Install  1 Package
+
+Total download size: 310 k
+Installed size: 887 k
+Is this ok [y/N]: y
+Downloading Packages:
+net-tools-2.0-0.73.20160912git.el10.x86_64.rpm                                                                                               11 MB/s | 310 kB     00:00
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Total                                                                                                                                       6.9 MB/s | 310 kB     00:00
+Running transaction check
+Transaction check succeeded.
+Running transaction test
+Transaction test succeeded.
+Running transaction
+  Preparing        :                                                                                                                                                    1/1
+  Installing       : net-tools-2.0-0.73.20160912git.el10.x86_64                                                                                                         1/1
+  Running scriptlet: net-tools-2.0-0.73.20160912git.el10.x86_64                                                                                                         1/1
+Installed products updated.
+
+Installed:
+  net-tools-2.0-0.73.20160912git.el10.x86_64
+
+Complete!
+[ec2-user@ip-172-31-39-221 ~]$ netstat -tuln
+Active Internet connections (only servers)
+Proto Recv-Q Send-Q Local Address           Foreign Address         State
+tcp        0      0 0.0.0.0:22              0.0.0.0:*               LISTEN
+tcp6       0      0 :::22                   :::*                    LISTEN
+udp        0      0 127.0.0.1:323           0.0.0.0:*
+udp6       0      0 ::1:323                 :::*
+[ec2-user@ip-172-31-39-221 ~]$ netstat -an
+Active Internet connections (servers and established)
+Proto Recv-Q Send-Q Local Address           Foreign Address         State
+tcp        0      0 0.0.0.0:22              0.0.0.0:*               LISTEN
+tcp        0    224 172.31.39.221:22        103.90.157.82:64703     ESTABLISHED
+tcp        0      0 172.31.39.221:45990     3.108.120.235:443       TIME_WAIT
+tcp        0      0 172.31.39.221:45984     3.108.120.235:443       TIME_WAIT
+tcp6       0      0 :::22                   :::*                    LISTEN
+udp        0      0 172.31.39.221:68        172.31.32.1:67          ESTABLISHED
+udp        0      0 127.0.0.1:323           0.0.0.0:*
+udp6       0      0 ::1:323                 :::*
+raw6       0      0 :::58                   :::*                    7
+Active UNIX domain sockets (servers and established)
+Proto RefCnt Flags       Type       State         I-Node   Path
+unix  3      [ ]         STREAM     CONNECTED     9813     /run/systemd/journal/stdout
+unix  2      [ ]         DGRAM      CONNECTED     6618
+unix  3      [ ]         STREAM     CONNECTED     8180
+unix  3      [ ]         STREAM     CONNECTED     8645
+unix  2      [ ]         DGRAM      CONNECTED     7739
+unix  3      [ ]         DGRAM      CONNECTED     4424
+unix  3      [ ]         STREAM     CONNECTED     250003   /run/systemd/journal/stdout
+unix  3      [ ]         STREAM     CONNECTED     9624
+unix  2      [ ]         DGRAM                    250060   /run/user/1000/systemd/notify
+unix  2      [ ACC ]     STREAM     LISTENING     250067   /run/user/1000/systemd/private
+unix  2      [ ACC ]     STREAM     LISTENING     249629   /run/user/1000/bus
+unix  2      [ ACC ]     STREAM     LISTENING     249632   /run/user/1000/pulse/native
+unix  2      [ ACC ]     STREAM     LISTENING     249633   /run/user/1000/pipewire-0
+unix  2      [ ACC ]     STREAM     LISTENING     249634   /run/user/1000/pipewire-0-manager
+unix  3      [ ]         STREAM     CONNECTED     8552     /run/systemd/journal/stdout
+unix  3      [ ]         STREAM     CONNECTED     12516
+unix  3      [ ]         DGRAM      CONNECTED     4423     /run/systemd/notify
+unix  2      [ ACC ]     STREAM     LISTENING     4431     /run/systemd/userdb/io.systemd.DynamicUser
+unix  3      [ ]         STREAM     CONNECTED     12546
+unix  2      [ ACC ]     STREAM     LISTENING     4432     /run/systemd/io.systemd.ManagedOOM
+unix  3      [ ]         DGRAM      CONNECTED     250062
+unix  3      [ ]         STREAM     CONNECTED     8581     /run/dbus/system_bus_socket
+unix  8      [ ]         DGRAM      CONNECTED     4440     /run/systemd/journal/dev-log
+unix  11     [ ]         DGRAM      CONNECTED     4441     /run/systemd/journal/socket
+unix  2      [ ACC ]     STREAM     LISTENING     4442     /run/systemd/journal/stdout
+unix  3      [ ]         DGRAM      CONNECTED     4427
+unix  2      [ ACC ]     STREAM     LISTENING     7580     /run/systemd/io.systemd.BootControl
+unix  3      [ ]         STREAM     CONNECTED     7327     /run/systemd/journal/stdout
+unix  2      [ ]         DGRAM      CONNECTED     5955
+unix  2      [ ACC ]     STREAM     LISTENING     7128     /run/systemd/io.systemd.sysext
+unix  3      [ ]         STREAM     CONNECTED     10256    /run/dbus/system_bus_socket
+unix  3      [ ]         STREAM     CONNECTED     249672
+unix  2      [ ]         DGRAM                    8034
+unix  3      [ ]         STREAM     CONNECTED     7843     /run/systemd/journal/stdout
+unix  2      [ ]         DGRAM      CONNECTED     8745
+unix  3      [ ]         DGRAM      CONNECTED     250065
+unix  3      [ ]         DGRAM      CONNECTED     7823
+unix  3      [ ]         STREAM     CONNECTED     8611
+unix  2      [ ACC ]     STREAM     LISTENING     7766     /run/dbus/system_bus_socket
+unix  2      [ ACC ]     STREAM     LISTENING     8521     /run/ssh-unix-local/socket
+unix  2      [ ACC ]     STREAM     LISTENING     7768     /run/.heim_org.h5l.kcm-socket
+unix  2      [ ]         DGRAM      CONNECTED     8765
+unix  2      [ ACC ]     STREAM     LISTENING     8528     /run/systemd/io.systemd.Hostname
+unix  3      [ ]         STREAM     CONNECTED     8893     /run/dbus/system_bus_socket
+unix  3      [ ]         DGRAM      CONNECTED     4425
+unix  2      [ ]         STREAM     CONNECTED     249942
+unix  3      [ ]         STREAM     CONNECTED     12562
+unix  3      [ ]         STREAM     CONNECTED     6892
+unix  3      [ ]         STREAM     CONNECTED     7741
+unix  2      [ ]         DGRAM      CONNECTED     252527
+unix  2      [ ]         DGRAM      CONNECTED     249601
+unix  3      [ ]         STREAM     CONNECTED     8028
+unix  3      [ ]         DGRAM      CONNECTED     4426
+unix  3      [ ]         STREAM     CONNECTED     11838    /run/systemd/journal/stdout
+unix  2      [ ]         DGRAM      CONNECTED     9826
+unix  3      [ ]         STREAM     CONNECTED     6088
+unix  3      [ ]         STREAM     CONNECTED     8646
+unix  2      [ ]         DGRAM      CONNECTED     8770     /run/chrony/chronyd.sock
+unix  3      [ ]         DGRAM      CONNECTED     10259
+unix  3      [ ]         DGRAM      CONNECTED     250066
+unix  3      [ ]         STREAM     CONNECTED     6597     /run/systemd/journal/stdout
+unix  3      [ ]         STREAM     CONNECTED     11829    /run/dbus/system_bus_socket
+unix  3      [ ]         STREAM     CONNECTED     10559
+unix  3      [ ]         STREAM     CONNECTED     8181     /run/systemd/journal/stdout
+unix  2      [ ACC ]     STREAM     LISTENING     6266     /run/systemd/private
+unix  2      [ ACC ]     STREAM     LISTENING     6290     /run/lvm/lvmpolld.socket
+unix  2      [ ACC ]     SEQPACKET  LISTENING     6291     /run/systemd/coredump
+unix  2      [ ACC ]     STREAM     LISTENING     5779     /run/systemd/io.systemd.Credentials
+unix  3      [ ]         STREAM     CONNECTED     7807
+unix  2      [ ACC ]     SEQPACKET  LISTENING     5780     /run/udev/control
+unix  2      [ ACC ]     STREAM     LISTENING     6292     /run/systemd/userdb/io.systemd.Multiplexer
+unix  3      [ ]         DGRAM      CONNECTED     6265
+unix  3      [ ]         STREAM     CONNECTED     8035
+unix  3      [ ]         DGRAM      CONNECTED     6909
+unix  3      [ ]         STREAM     CONNECTED     8579     /run/dbus/system_bus_socket
+unix  3      [ ]         DGRAM      CONNECTED     250061
+unix  3      [ ]         STREAM     CONNECTED     11845    /run/dbus/system_bus_socket
+unix  3      [ ]         STREAM     CONNECTED     9623
+unix  2      [ ]         DGRAM      CONNECTED     6904
+unix  3      [ ]         STREAM     CONNECTED     10496
+unix  2      [ ]         DGRAM      CONNECTED     249609
+unix  3      [ ]         STREAM     CONNECTED     11827    /run/systemd/journal/stdout
+unix  2      [ ACC ]     STREAM     LISTENING     6475     /run/systemd/journal/io.systemd.journal
+unix  3      [ ]         STREAM     CONNECTED     8551
+unix  2      [ ]         DGRAM      CONNECTED     249669
+unix  2      [ ]         DGRAM      CONNECTED     252711
+unix  3      [ ]         STREAM     CONNECTED     7844     /run/systemd/journal/stdout
+unix  3      [ ]         STREAM     CONNECTED     12517
+unix  3      [ ]         DGRAM      CONNECTED     250064
+unix  3      [ ]         DGRAM      CONNECTED     10260
+unix  3      [ ]         STREAM     CONNECTED     249623   /run/dbus/system_bus_socket
+unix  3      [ ]         STREAM     CONNECTED     7740
+unix  3      [ ]         DGRAM      CONNECTED     6908
+unix  3      [ ]         STREAM     CONNECTED     10255
+unix  3      [ ]         DGRAM      CONNECTED     6264
+unix  3      [ ]         STREAM     CONNECTED     249673
+unix  3      [ ]         STREAM     CONNECTED     8885     /run/systemd/journal/stdout
+unix  3      [ ]         DGRAM      CONNECTED     250063
+unix  2      [ ]         DGRAM      CONNECTED     10560
+unix  3      [ ]         STREAM     CONNECTED     249561
+unix  2      [ ]         DGRAM      CONNECTED     6476
+unix  3      [ ]         DGRAM      CONNECTED     7824
+unix  3      [ ]         STREAM     CONNECTED     7821     /run/systemd/journal/stdout
+unix  3      [ ]         STREAM     CONNECTED     7808
+unix  2      [ ]         DGRAM      CONNECTED     252532
+unix  3      [ ]         STREAM     CONNECTED     7857     /run/dbus/system_bus_socket
+unix  2      [ ]         DGRAM      CONNECTED     8575
+unix  3      [ ]         STREAM     CONNECTED     9766     /run/systemd/journal/stdout
+unix  3      [ ]         STREAM     CONNECTED     8760     @dff3917f632ad26/bus/systemd-logind/system
+unix  3      [ ]         STREAM     CONNECTED     7809     @66d390e0062cad77/bus/systemd/bus-api-system
+unix  3      [ ]         STREAM     CONNECTED     250068   @ed32bd3add7c8455/bus/systemd/bus-system
+unix  3      [ ]         STREAM     CONNECTED     8580     @d9410c610965d61/bus/dbus-broker-lau/system
+Active Bluetooth connections (servers and established)
+Proto  Destination       Source            State         PSM DCID   SCID      IMTU    OMTU Security
+Proto  Destination       Source            State     Channel
+[ec2-user@ip-172-31-39-221 ~]$ netstat -r
+Kernel IP routing table
+Destination     Gateway         Genmask         Flags   MSS Window  irtt Iface
+default         ip-172-31-32-1. 0.0.0.0         UG        0 0          0 ens5
+ip-172-31-32-0. 0.0.0.0         255.255.240.0   U         0 0          0 ens5
+[ec2-user@ip-172-31-39-221 ~]$ ss -tuln
+Netid              State               Recv-Q              Send-Q                             Local Address:Port                             Peer Address:Port
+udp                UNCONN              0                   0                                      127.0.0.1:323                                   0.0.0.0:*
+udp                UNCONN              0                   0                                          [::1]:323                                      [::]:*
+tcp                LISTEN              0                   128                                      0.0.0.0:22                                    0.0.0.0:*
+tcp                LISTEN              0                   128                                         [::]:22                                       [::]:*
+[ec2-user@ip-172-31-39-221 ~]$ ss -t
+State                 Recv-Q                 Send-Q                                 Local Address:Port                                   Peer Address:Port
+ESTAB                 0                      52                                     172.31.39.221:ssh                                   103.90.157.82:64703
+[ec2-user@ip-172-31-39-221 ~]$ ss -u
+Recv-Q                   Send-Q                                            Local Address:Port                                         Peer Address:Port
+0                        0                                            172.31.39.221%ens5:bootpc                                        172.31.32.1:bootps
+[ec2-user@ip-172-31-39-221 ~]$ ss -tulpn
+Netid            State             Recv-Q            Send-Q                       Local Address:Port                        Peer Address:Port            Process
+udp              UNCONN            0                 0                                127.0.0.1:323                              0.0.0.0:*
+udp              UNCONN            0                 0                                    [::1]:323                                 [::]:*
+tcp              LISTEN            0                 128                                0.0.0.0:22                               0.0.0.0:*
+tcp              LISTEN            0                 128                                   [::]:22                                  [::]:*
+[ec2-user@ip-172-31-39-221 ~]$ nslookup google.com
+-bash: nslookup: command not found
+[ec2-user@ip-172-31-39-221 ~]$ ^C
+[ec2-user@ip-172-31-39-221 ~]$ sudo dnf install bind-utils
+Updating Subscription Management repositories.
+Unable to read consumer identity
+
+This system is not registered with an entitlement server. You can use "rhc" or "subscription-manager" to register.
+
+Last metadata expiration check: 1:30:33 ago on Mon Jun 29 01:00:47 2026.
+Dependencies resolved.
+============================================================================================================================================================================
+ Package                             Architecture                  Version                                         Repository                                          Size
+============================================================================================================================================================================
+Installing:
+ bind-utils                          x86_64                        32:9.18.33-15.el10_2.2                          rhel-10-appstream-rhui-rpms                        233 k
+Installing dependencies:
+ bind-libs                           x86_64                        32:9.18.33-15.el10_2.2                          rhel-10-appstream-rhui-rpms                        1.3 M
+ bind-license                        noarch                        32:9.18.33-15.el10_2.2                          rhel-10-appstream-rhui-rpms                         19 k
+ fstrm                               x86_64                        0.6.1-12.el10                                   rhel-10-appstream-rhui-rpms                         31 k
+ libmaxminddb                        x86_64                        1.9.1-4.el10                                    rhel-10-appstream-rhui-rpms                         46 k
+ libuv                               x86_64                        1:1.52.1-1.el10_2                               rhel-10-appstream-rhui-rpms                        272 k
+
+Transaction Summary
+============================================================================================================================================================================
+Install  6 Packages
+
+Total download size: 1.9 M
+Installed size: 5.0 M
+Is this ok [y/N]: y
+Downloading Packages:
+(1/6): fstrm-0.6.1-12.el10.x86_64.rpm                                                                                                       826 kB/s |  31 kB     00:00
+(2/6): bind-libs-9.18.33-15.el10_2.2.x86_64.rpm                                                                                              26 MB/s | 1.3 MB     00:00
+(3/6): libmaxminddb-1.9.1-4.el10.x86_64.rpm                                                                                                 868 kB/s |  46 kB     00:00
+(4/6): bind-license-9.18.33-15.el10_2.2.noarch.rpm                                                                                          1.1 MB/s |  19 kB     00:00
+(5/6): bind-utils-9.18.33-15.el10_2.2.x86_64.rpm                                                                                             19 MB/s | 233 kB     00:00
+(6/6): libuv-1.52.1-1.el10_2.x86_64.rpm                                                                                                      20 MB/s | 272 kB     00:00
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Total                                                                                                                                        21 MB/s | 1.9 MB     00:00
+Running transaction check
+Transaction check succeeded.
+Running transaction test
+Transaction test succeeded.
+Running transaction
+  Preparing        :                                                                                                                                                    1/1
+  Installing       : libuv-1:1.52.1-1.el10_2.x86_64                                                                                                                     1/6
+  Installing       : bind-license-32:9.18.33-15.el10_2.2.noarch                                                                                                         2/6
+  Installing       : libmaxminddb-1.9.1-4.el10.x86_64                                                                                                                   3/6
+  Installing       : fstrm-0.6.1-12.el10.x86_64                                                                                                                         4/6
+  Installing       : bind-libs-32:9.18.33-15.el10_2.2.x86_64                                                                                                            5/6
+  Installing       : bind-utils-32:9.18.33-15.el10_2.2.x86_64                                                                                                           6/6
+  Running scriptlet: bind-utils-32:9.18.33-15.el10_2.2.x86_64                                                                                                           6/6
+Installed products updated.
+
+Installed:
+  bind-libs-32:9.18.33-15.el10_2.2.x86_64      bind-license-32:9.18.33-15.el10_2.2.noarch      bind-utils-32:9.18.33-15.el10_2.2.x86_64      fstrm-0.6.1-12.el10.x86_64
+  libmaxminddb-1.9.1-4.el10.x86_64             libuv-1:1.52.1-1.el10_2.x86_64
+
+Complete!
+[ec2-user@ip-172-31-39-221 ~]$ nslookup google.com
+Server:         172.31.0.2
+Address:        172.31.0.2#53
+
+Non-authoritative answer:
+Name:   google.com
+Address: 192.178.173.113
+Name:   google.com
+Address: 192.178.173.101
+Name:   google.com
+Address: 192.178.173.139
+Name:   google.com
+Address: 192.178.173.100
+Name:   google.com
+Address: 192.178.173.102
+Name:   google.com
+Address: 192.178.173.138
+Name:   google.com
+Address: 2404:6800:4000:1006::71
+Name:   google.com
+Address: 2404:6800:4000:1006::8b
+Name:   google.com
+Address: 2404:6800:4000:1006::65
+Name:   google.com
+Address: 2404:6800:4000:1006::64
+
+[ec2-user@ip-172-31-39-221 ~]$ dig google.com
+
+; <<>> DiG 9.18.33 <<>> google.com
+;; global options: +cmd
+;; Got answer:
+;; ->>HEADER<<- opcode: QUERY, status: NOERROR, id: 43486
+;; flags: qr rd ra; QUERY: 1, ANSWER: 6, AUTHORITY: 0, ADDITIONAL: 1
+
+;; OPT PSEUDOSECTION:
+; EDNS: version: 0, flags:; udp: 4096
+;; QUESTION SECTION:
+;google.com.                    IN      A
+
+;; ANSWER SECTION:
+google.com.             214     IN      A       192.178.193.102
+google.com.             214     IN      A       192.178.193.139
+google.com.             214     IN      A       192.178.193.113
+google.com.             214     IN      A       192.178.193.100
+google.com.             214     IN      A       192.178.193.101
+google.com.             214     IN      A       192.178.193.138
+
+;; Query time: 2 msec
+;; SERVER: 172.31.0.2#53(172.31.0.2) (UDP)
+;; WHEN: Mon Jun 29 02:34:54 UTC 2026
+;; MSG SIZE  rcvd: 135
+
+[ec2-user@ip-172-31-39-221 ~]$ dig google.com
+
+; <<>> DiG 9.18.33 <<>> google.com
+;; global options: +cmd
+;; Got answer:
+;; ->>HEADER<<- opcode: QUERY, status: NOERROR, id: 43865
+;; flags: qr rd ra; QUERY: 1, ANSWER: 6, AUTHORITY: 0, ADDITIONAL: 1
+
+;; OPT PSEUDOSECTION:
+; EDNS: version: 0, flags:; udp: 4096
+;; QUESTION SECTION:
+;google.com.                    IN      A
+
+;; ANSWER SECTION:
+google.com.             58      IN      A       192.178.193.138
+google.com.             58      IN      A       192.178.193.101
+google.com.             58      IN      A       192.178.193.100
+google.com.             58      IN      A       192.178.193.113
+google.com.             58      IN      A       192.178.193.139
+google.com.             58      IN      A       192.178.193.102
+
+;; Query time: 0 msec
+;; SERVER: 172.31.0.2#53(172.31.0.2) (UDP)
+;; WHEN: Mon Jun 29 02:37:30 UTC 2026
+;; MSG SIZE  rcvd: 135
+
+[ec2-user@ip-172-31-39-221 ~]$ dig +short google.com
+192.178.193.102
+192.178.193.138
+192.178.193.101
+192.178.193.100
+192.178.193.113
+192.178.193.139
+[ec2-user@ip-172-31-39-221 ~]$ dig google.com MX
+
+; <<>> DiG 9.18.33 <<>> google.com MX
+;; global options: +cmd
+;; Got answer:
+;; ->>HEADER<<- opcode: QUERY, status: NOERROR, id: 42449
+;; flags: qr rd ra; QUERY: 1, ANSWER: 1, AUTHORITY: 0, ADDITIONAL: 1
+
+;; OPT PSEUDOSECTION:
+; EDNS: version: 0, flags:; udp: 4096
+;; QUESTION SECTION:
+;google.com.                    IN      MX
+
+;; ANSWER SECTION:
+google.com.             137     IN      MX      10 smtp.google.com.
+
+;; Query time: 7 msec
+;; SERVER: 172.31.0.2#53(172.31.0.2) (UDP)
+;; WHEN: Mon Jun 29 02:38:02 UTC 2026
+;; MSG SIZE  rcvd: 60
+
+[ec2-user@ip-172-31-39-221 ~]$ dig google.com NS
+
+; <<>> DiG 9.18.33 <<>> google.com NS
+;; global options: +cmd
+;; Got answer:
+;; ->>HEADER<<- opcode: QUERY, status: NOERROR, id: 40658
+;; flags: qr rd ra; QUERY: 1, ANSWER: 4, AUTHORITY: 0, ADDITIONAL: 1
+
+;; OPT PSEUDOSECTION:
+; EDNS: version: 0, flags:; udp: 4096
+;; QUESTION SECTION:
+;google.com.                    IN      NS
+
+;; ANSWER SECTION:
+google.com.             56018   IN      NS      ns4.google.com.
+google.com.             56018   IN      NS      ns3.google.com.
+google.com.             56018   IN      NS      ns2.google.com.
+google.com.             56018   IN      NS      ns1.google.com.
+
+;; Query time: 1 msec
+;; SERVER: 172.31.0.2#53(172.31.0.2) (UDP)
+;; WHEN: Mon Jun 29 02:38:18 UTC 2026
+;; MSG SIZE  rcvd: 111
+
+[ec2-user@ip-172-31-39-221 ~]$ curl https://example.com
+<!doctype html><html lang="en"><head><title>Example Domain</title><link rel="icon" href="data:,"><meta name="viewport" content="width=device-width, initial-scale=1"><style>body{background:#eee;width:60vw;margin:15vh auto;font-family:system-ui,sans-serif}h1{font-size:1.5em}div{opacity:0.8}a:link,a:visited{color:#348}</style></head><body><div><h1>Example Domain</h1><p>This domain is for use in documentation examples without needing permission. Avoid use in operations.</p><p><a href="https://iana.org/domains/example">Learn more</a></p></div></body></html>
+[ec2-user@ip-172-31-39-221 ~]$ curl -I https://example.com
+HTTP/2 200
+date: Mon, 29 Jun 2026 02:40:00 GMT
+content-type: text/html
+server: cloudflare
+last-modified: Sat, 27 Jun 2026 11:29:36 GMT
+allow: GET, HEAD
+accept-ranges: bytes
+age: 5402
+cf-cache-status: HIT
+cf-ray: a13190602cd51294-MRS
+
+[ec2-user@ip-172-31-39-221 ~]$ curl -O https://google.com/file.txt
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+100  1569  100  1569    0     0  12952      0 --:--:-- --:--:-- --:--:-- 12966
+[ec2-user@ip-172-31-39-221 ~]$ wget https://example.com/file.zip
+--2026-06-29 02:40:52--  https://example.com/file.zip
+Resolving example.com (example.com)... 104.20.23.154, 172.66.147.243, 2606:4700:10::6814:179a, ...
+Connecting to example.com (example.com)|104.20.23.154|:443... connected.
+HTTP request sent, awaiting response... 404 Not Found
+2026-06-29 02:40:53 ERROR 404: Not Found.
+
+[ec2-user@ip-172-31-39-221 ~]$ ^C
+[ec2-user@ip-172-31-39-221 ~]$ curl -O https://google.com/file1.txt
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+100  1570  100  1570    0     0  13137      0 --:--:-- --:--:-- --:--:-- 13193
+[ec2-user@ip-172-31-39-221 ~]$ wget https://example.com/file1.zip
+--2026-06-29 02:42:08--  https://example.com/file1.zip
+Resolving example.com (example.com)... 172.66.147.243, 104.20.23.154, 2606:4700:10::ac42:93f3, ...
+Connecting to example.com (example.com)|172.66.147.243|:443... connected.
+HTTP request sent, awaiting response... 404 Not Found
+2026-06-29 02:42:08 ERROR 404: Not Found.
+
+[ec2-user@ip-172-31-39-221 ~]$ ^C
+[ec2-user@ip-172-31-39-221 ~]$ wc -l file1.txt
+11 file1.txt
+[ec2-user@ip-172-31-39-221 ~]$ wc -l < file1.txt
+11
+[ec2-user@ip-172-31-39-221 ~]$
